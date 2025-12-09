@@ -52,7 +52,7 @@ app = FastAPI(title="TDS Data Analyst Agent")
 # -------------------- Robust Gemini LLM with fallback --------------------
 from collections import defaultdict
 import time
-from langchain_google_genai import ChatGoogleGenerativeAI
+
 
 # Config
 GEMINI_KEYS = [os.getenv(f"gemini_api_{i}") for i in range(1, 11)]
