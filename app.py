@@ -485,10 +485,13 @@ You must:
     MessagesPlaceholder(variable_name="agent_scratchpad"),
 ])
 
-agent = create_tool_calling_agent(
+from langchain.agents import initialize_agent, AgentType
+
+agent = initialize_agent(
+    tools=[scrape_url_to_dataframe],
     llm=llm,
-    tools=[scrape_url_to_dataframe],  # let the agent call tools if it wants; we will also pre-process scrapes
-    prompt=prompt
+    agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+    verbose=True
 )
 
 agent_executor = AgentExecutor(
